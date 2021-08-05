@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="install-the-application.">Install the application.</h1>
+<p>Before doing anything, set the database details in the .env file.</p>
+<p>Run this command <code>php artisan migrate:refresh --seed</code> to migrate ( and to refresh ) everything and seed the database with the data used by the admin interface ( users etc ).</p>
+<p>Run this command <code>php artisan db:seed --class=EntrySetting</code> to seed the <code>entry_settings</code> table with the data needed for the maximum numbers of surveys ( <code>entries_limit</code> field ), the number of surveys ( <code>entries_report_num</code> field ) used to send reports when this number ( or multiple of this number ) is reached . Say this number is “2” at every 2 entries, it will send a report to those emails.  Check the file at <code>database/migrations/seeders/EntrySetting.php</code> to change those values. Use this command just once.</p>
+<p>If you want, you can also seed the database with fake surveys to make things easer, use this commaand <code></code>php artisan db:seed --class=SurveySeeder <code>. Check the file at</code>database/migrations/seeders/SurveySeeder.php<code>to change the amount of fake surveys. Take in consideration the seeded data from the</code>entry_settings``` table to keep the system working fine.</p>
+<p>To start the application use this command <code>php artisan serve</code>.</p>
+<p>Check <code>http://127.0.0.1:8000/login</code> for the admin login page.<br>
+Check <code>http://127.0.0.1:8000/admin</code> for the admin dashboard.</p>
+<p>Demo user: <a href="mailto:admin@admin.com">admin@admin.com</a><br>
+Demo password: password.</p>
+<p>You can check the database for other admin users. This was tested locally so when using it this way, for your session, it uses a fake IP. And also the same things happen with the fake surveys.</p>
+<p>For testing the daily report system one has to work with cron jobs.</p>
+<pre class=" language-php"><code class="prism  language-php"><span class="token operator">*</span> <span class="token operator">*</span> <span class="token operator">*</span> <span class="token operator">*</span> <span class="token operator">*</span> cd <span class="token operator">/</span>path<span class="token operator">-</span>to<span class="token operator">-</span>your<span class="token operator">-</span>project <span class="token operator">&amp;&amp;</span> php artisan schedule<span class="token punctuation">:</span>run <span class="token operator">&gt;</span><span class="token operator">&gt;</span> <span class="token operator">/</span>dev<span class="token operator">/</span><span class="token keyword">null</span> <span class="token number">2</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span><span class="token number">1</span>
+</code></pre>
+</div>
+</body>
+
+</html>
